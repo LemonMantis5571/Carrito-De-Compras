@@ -2,6 +2,7 @@ const carrito = document.querySelector('#carrito');
 const contenedor_carrito = document.querySelector('#lista-carrito tbody');
 const vaciar_carritoBTN = document.querySelector('#vaciar-carrito');
 const lista_cursos = document.querySelector('#lista-cursos');
+const prevenir = document.querySelector('#busqueda');
 let ShoppingCart = [];
 
 
@@ -13,6 +14,10 @@ function EventLoad() {
     carrito.addEventListener('click', eliminarCurso);
 
     vaciar_carritoBTN.addEventListener('click', VaciarCarrito);
+
+    prevenir.addEventListener('click', (e) =>{
+        e.preventDefault();
+    });
 }
 
 
