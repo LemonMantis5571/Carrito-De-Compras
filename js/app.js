@@ -18,6 +18,11 @@ function EventLoad() {
     prevenir.addEventListener('click', (e) =>{
         e.preventDefault();
     });
+
+    document.addEventListener('DOMContentLoaded', () =>{
+        ShoppingCart = JSON.parse(localStorage.getItem('carrito')) || [];
+        ShoppingCartHTML();
+    })
 }
 
 
@@ -44,6 +49,7 @@ function eliminarCurso(e){
 function VaciarCarrito(e){
     e.preventDefault();
     if(e.target.classList.contains('u-full-width')){
+        localStorage.removeItem('carrito');
         ShoppingCart = [];
         CleanShoppingCart();
     }
@@ -119,6 +125,8 @@ function ShoppingCartHTML(){
         contenedor_carrito.appendChild(row);
 
     });
+
+    SaveONStorage();
 }
 
 
@@ -131,3 +139,6 @@ function CleanShoppingCart(){
 }
 
 
+function SaveONStorage() {
+    localStorage.setItem('carrito', JSON.stringify(ShoppingCart));
+}
